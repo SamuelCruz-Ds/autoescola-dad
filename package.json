@@ -1,0 +1,58 @@
+{
+  "name": "autoescola-dad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sistema de Gerenciamento de Autoescola — DAD Grupo 4",
+  "author": "Grupo 4 — DAD",
+  "main": "dist/main/index.cjs",
+  "scripts": {
+    "dev": "node --import tsx scripts/dev.ts",
+    "build": "node --import tsx scripts/build.ts",
+    "start": "electron .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write src scripts *.config.ts",
+    "db:setup": "node --import tsx scripts/database.ts setup",
+    "db:seed": "node --import tsx scripts/database.ts seed",
+    "db:demo": "node --import tsx scripts/demo.ts",
+    "db:demo:sql": "node --import tsx scripts/database.ts demo-sql",
+    "package": "npm run build && electron-builder --win nsis",
+    "package:dir": "npm run build && electron-builder --dir"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.9",
+    "dotenv": "17.2.3",
+    "mysql2": "3.24.6"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "electron": "45.4.1",
+    "electron-builder": "26.18.0",
+    "esbuild": "0.28.2",
+    "prettier": "3.10.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  },
+  "build": {
+    "appId": "br.edu.dad.autoescola",
+    "productName": "Autoescola DAD",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "database/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}

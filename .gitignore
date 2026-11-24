@@ -1,0 +1,17 @@
+node_modules/
+dist/
+release/
+.env
+.env.*
+.demo-credentials.local.json
+!.env.example
+*.log
+coverage/
+test-results/
+playwright-report/
+.DS_Store
+*.tsbuildinfo
+tests/
+vitest*.config.ts
+AGENTS.md
+docs/VALIDACAO.md
